@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Online</title>
+</head>
+<body>
+
+  <h1>Toko Online</h1>
+
+  <h2>Kaos Hitam</h2>
+  <p>Harga: Rp50.000</p>
+  <button onclick="tambah(50000)">Tambah</button>
+
+  <h2>Sepatu</h2>
+  <p>Harga: Rp150.000</p>
+  <button onclick="tambah(150000)">Tambah</button>
+
+  <h2>Keranjang</h2>
+  <p>Total: Rp<span id="total">0</span></p>
+  <button onclick="checkout()">Checkout</button>
+
+  <script>
+    let total = 0;
+
+    function tambah(harga) {
+      total += harga;
+      document.getElementById("total").innerText = total;
+    }
+
+    function checkout() {
+      alert("Total belanja: Rp" + total);
+    }
+  </script>
+
+</body>
+</html>

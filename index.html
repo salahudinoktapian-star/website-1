@@ -3,36 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toko Online</title>
+  <title>Toko App</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<header>
   <h1>Toko Online</h1>
+  <div class="cart-icon" onclick="openCart()">🛒 <span id="cart-count">0</span></div>
+</header>
 
-  <h2>Kaos Hitam</h2>
-  <p>Harga: Rp50.000</p>
-  <button onclick="tambah(50000)">Tambah</button>
+<div class="search-box">
+  <input type="text" id="search" placeholder="Cari produk...">
+</div>
 
-  <h2>Sepatu</h2>
-  <p>Harga: Rp150.000</p>
-  <button onclick="tambah(150000)">Tambah</button>
+<main id="product-list">
+  <!-- produk di-generate JS -->
+</main>
 
-  <h2>Keranjang</h2>
-  <p>Total: Rp<span id="total">0</span></p>
+<footer>
+  <div>Total: <b>Rp <span id="total">0</span></b></div>
   <button onclick="checkout()">Checkout</button>
+</footer>
 
-  <script>
-    let total = 0;
+<!-- Halaman Keranjang -->
+<div id="cart-page" class="hidden">
+  <h2>Keranjang Anda</h2>
+  <div id="cart-items"></div>
+  <div class="cart-footer">
+    <b>Total: Rp <span id="cart-total">0</span></b>
+    <button onclick="checkout()">Checkout</button>
+    <button onclick="closeCart()">Tutup</button>
+  </div>
+</div>
 
-    function tambah(harga) {
-      total += harga;
-      document.getElementById("total").innerText = total;
-    }
+<!-- Notifikasi -->
+<div id="notif">Item ditambahkan!</div>
 
-    function checkout() {
-      alert("Total belanja: Rp" + total);
-    }
-  </script>
+<script src="script.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
 
 </body>
 </html>
